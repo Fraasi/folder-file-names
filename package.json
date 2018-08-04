@@ -4,7 +4,7 @@
   "description": "save to file or console print current dir filenames",
   "main": "filenames.js",
   "bin": {
-    "ffn": "filenames.js"
+    "filenames": "./filenames.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

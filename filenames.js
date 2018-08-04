@@ -6,6 +6,7 @@ const pkg = require('./package.json')
 
 program
 	.version(pkg.version)
+	.usage('[options]')
 	.option('-s, --save [filename]', 'save to .txt file (default: Filenames.txt)', /^(\w|\d)+(\.txt)$/)
 	.option('-E, --no-ext', 'without extension')
 	.option('-C, --no-console', 'don\'t print to console')
