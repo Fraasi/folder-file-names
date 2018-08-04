@@ -1,0 +1,29 @@
+{
+  "name": "folder-file-names",
+  "version": "0.0.1",
+  "description": "save to file or console print current dir filenames",
+  "main": "filenames.js",
+  "bin": {
+    "ffn": "filenames.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fraasi/folder-file-names.git"
+  },
+  "keywords": [
+    "folder",
+    "filenames"
+  ],
+  "author": "Fraasi <fraasi.gh@gmail.com> (https://github.com/fraasi/)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Fraasi/folder-file-names/issues"
+  },
+  "homepage": "https://github.com/Fraasi/folder-file-names#readme",
+  "dependencies": {
+    "commander": "^2.17.0"
+  }
+}

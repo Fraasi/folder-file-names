@@ -1,5 +1,5 @@
 # folder-file-names
-A small node CLI script to print and save to file current folder filenames
+A small node CLI script to print and/or save to file current folder filenames
 
 
 Arguments to use:   
@@ -10,4 +10,9 @@ Arguments to use:
   .txt will be added automatically.  
   If no argument after -save, the default file to save is 'Filenames.txt'  
   -help = this.help
+
+-w // without filetype
+-p // print filenames to console
+-s // save to file
+--help
 
