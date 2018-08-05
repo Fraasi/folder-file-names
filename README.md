@@ -1,25 +1,25 @@
 # folder-file-names
-A small node CLI script to print and/or save to file current folder filenames
-
-* complete rewrite in progress to make this an npm package.
+A small node CLI script to print and/or save to file current folder filenames.  
+Npm [link](https://www.npmjs.com/package/folder-file-names)  
+Install globally to use it everywhere.
 
 ```
-$ npm install folder-file-names  
-$ filenames -h
-
+$ npm install -g folder-file-names  
+$ filenames -h  
+  
   Usage: filenames [options]
 
   Options:
 
     -V, --version          output the version number
     -s, --save [filename]  save to .txt file (default: Filenames.txt)
+    -f, --files            list only files
+    -d, --dirs             list only folders
     -E, --no-ext           without extension
     -C, --no-console       don't print to console
     -h, --help             output usage information  
 ```
 
-### todo  
-
-* add folder detection  
-* .files support for no.ext
-
+Running just `filenames` without options will print the whole directory to console.  
+Using `--save` flag, the text file will be saved to current folder.  
+Suggestions welcome. Open an issue if you have an idea to improve this.
