@@ -6,43 +6,47 @@ const program = require('commander')
 const pkg = require('./package.json')
 
 program
-	.version(pkg.version)
-	.option('-s, --save [filename]', 'save to .txt file (default: Filenames.txt)', /^(\w|\d)+(\.txt)$/)
-	.option('-f, --files', 'list only files')
-	.option('-d, --dirs', 'list only folders')
-	.option('-E, --no-ext', 'without extension')
-	.option('-C, --no-console', 'don\'t print to console')
+	.version('Filenames v' + pkg.version)
+	.option('-s, --save [filename]', 'Save to .txt file (default: Filenames.txt)', /^(\w|\d)+(\.txt)$/)
+	.option('-f, --files', 'List only files')
+	.option('-d, --dirs', 'List only folders')
+	.option('-a, --array', 'List files in an Array. Only in save, doesn\'t affect console. ')
+	.option('-E, --no-ext', 'Without extension')
+	.option('-C, --no-console', 'Don\'t print to console')
 	.parse(process.argv);
-
-fs.readdir(process.cwd(), (err, files) => {
+console.log('jhhjh %j')
+	fs.readdir(process.cwd(), (err, files) => {
 	if (err) throw err
 	let fileName = 'Filenames.txt'
 	let filesToSave = ''
 
+	if (program.array) filesToSave += '[\n'
+
 	files.forEach(file => {
 		const isDir = fs.lstatSync(file).isDirectory()
-	
+		const FolderOrFile = isDir ? 'Folder' : 'File'
+
 		if (!program.ext) {
 			const ext = path.extname(file);
 			file = path.basename(file, ext)	// = file.replace(ext, '')
 		}
 		if (program.files && !isDir) {
-			filesToSave += file + '\n'
-			if (program.console) console.log('\x1b[33m', file, '\x1b[0m', 'File'.padStart(50 - file.length, '.'))
-		} 
-		if (program.dirs && isDir) {
-			filesToSave += file + '\n'
-			if (program.console) console.log('\x1b[33m', file, '\x1b[0m', 'Folder'.padStart(50 - file.length, '.'))
+			filesToSave += program.array ? `'${file}',\n` : file + '\n'
+			if (program.console) console.log('\x1b[33m', file, '\x1b[0m', FolderOrFile.padStart(50 - file.length, '.'))
 		}
-		if ( (program.rawArgs.length === 2 || !program.ext) && !program.files && !program.dirs) {
-			filesToSave += file + '\n'
-			const isFile = isDir ? 'Folder' : 'File'
-			if (program.console) console.log('\x1b[33m', file, '\x1b[0m', isFile.padStart(50 - file.length, '.'))
+		if (program.dirs && isDir) {
+			filesToSave += program.array ? `'${file}',\n` : file + '\n'
+			if (program.console) console.log('\x1b[33m', file, '\x1b[0m', FolderOrFile.padStart(50 - file.length, '.'))
+		}
+		if ((program.rawArgs.length === 2 || !program.ext || program.save || program.array) && !program.files && !program.dirs) {
+			filesToSave += program.array ? `'${file}',\n` : file + '\n'
+			if (program.console) console.log('\x1b[33m', file, '\x1b[0m', FolderOrFile.padStart(50 - file.length, '.'))
 		}
 	})
+	if (program.array) filesToSave += ']'
 
-// program.save without -s = undefined, using default = filenames.txt
-// -s = true,  / -s name.txt = name.txt
+	// program.save without -s = undefined, using default = filenames.txt
+	// -s = true,  / -s name.txt = name.txt
 	if (program.save) {
 		if (typeof program.save === 'string') fileName = program.save
 		fs.writeFile(fileName, filesToSave, (err) => {
