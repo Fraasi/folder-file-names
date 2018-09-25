@@ -14,7 +14,7 @@ program
 	.option('-E, --no-ext', 'Without extension')
 	.option('-C, --no-console', 'Don\'t print to console')
 	.parse(process.argv);
-console.log('jhhjh %j')
+
 	fs.readdir(process.cwd(), (err, files) => {
 	if (err) throw err
 	let fileName = 'Filenames.txt'
