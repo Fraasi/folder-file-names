@@ -1,6 +1,6 @@
 {
   "name": "folder-file-names",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "save to file or console print current dir filenames",
   "main": "filenames.js",
   "bin": {
