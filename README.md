@@ -1,6 +1,8 @@
 # folder-file-names
-A small node CLI script to print and/or save to file current folder filenames.  
- [Github](https://github.com/Fraasi/folder-file-names), [Npm](https://www.npmjs.com/package/folder-file-names)  
+A small node CLI script to console print and/or save to file current folder filenames.  
+ 
+[![npm version](https://img.shields.io/npm/v/folder-file-names.svg?colorB=green&style=plastic&label=npm)](https://www.npmjs.com/package/folder-file-names)  
+  
 Install globally to use it everywhere.
 
 ```
@@ -24,6 +26,6 @@ $ filenames -h
 Running just `filenames` without options will print the whole directory to console.  
 Using `--save` flag, the text file will be saved to current folder.  
 
-If you need the filenames in another program, you can use the `--array` flag with `--save` (shorthand: `-sa`) to save the files in a javascript array format for easy copy pasting to your program.
+If you need the filenames in another program, you can use the `--array` flag with `--save` (shorthand: `-as`) to save the files in a javascript array format for easy copy pasting to your program.
 
-Suggestions welcome. Open an issue at github if you have an idea to improve this.
+Suggestions welcome. Open an issue at github if you have an idea to improve this or found a bug.
